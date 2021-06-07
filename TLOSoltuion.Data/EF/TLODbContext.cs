@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TLOSoltuion.Data.Configurations;
 using TLOSoltuion.Data.Entities;
 
 namespace TLOSoltuion.Data.EF
@@ -16,6 +17,7 @@ namespace TLOSoltuion.Data.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
         }
 
         public DbSet<Post> Post { get; set; }

@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -8,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TLOSoltuion.Data.EF;
+using TLOSoltuion.Data.Entities;
 
 namespace TLOSolution.WebApp
 {
@@ -24,6 +29,13 @@ namespace TLOSolution.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //add database connect
+            services.AddDbContext<TLODbContext>(opts =>
+                opts.UseSqlServer(Configuration.GetConnectionString("TLODb")));
+
+            services.AddIdentity<User, IdentityRole>()
+             .AddEntityFrameworkStores<TLODbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +56,7 @@ namespace TLOSolution.WebApp
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
