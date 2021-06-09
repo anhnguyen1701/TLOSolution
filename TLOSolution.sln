@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLOSolution.WebApp", "TLOSolution.WebApp\TLOSolution.WebApp.csproj", "{DF2D59DB-E3C8-4942-92A8-AFD7653895E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TLOSolution.WebApp", "TLOSolution.WebApp\TLOSolution.WebApp.csproj", "{DF2D59DB-E3C8-4942-92A8-AFD7653895E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLOSoltuion.Data", "TLOSoltuion.Data\TLOSoltuion.Data.csproj", "{7F5E21C7-BB21-41C4-AEA9-1953028B5BEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TLOSoltuion.Data", "TLOSoltuion.Data\TLOSoltuion.Data.csproj", "{7F5E21C7-BB21-41C4-AEA9-1953028B5BEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLOSolution.MailService", "TLOSolution.MailService\TLOSolution.MailService.csproj", "{B1F6E5EA-0A4B-4A8B-B874-7D4858F65A18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7F5E21C7-BB21-41C4-AEA9-1953028B5BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F5E21C7-BB21-41C4-AEA9-1953028B5BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F5E21C7-BB21-41C4-AEA9-1953028B5BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1F6E5EA-0A4B-4A8B-B874-7D4858F65A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1F6E5EA-0A4B-4A8B-B874-7D4858F65A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1F6E5EA-0A4B-4A8B-B874-7D4858F65A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1F6E5EA-0A4B-4A8B-B874-7D4858F65A18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

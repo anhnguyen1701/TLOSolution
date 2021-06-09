@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TLOSoltuion.Data\TLOSoltuion.Data.csproj" />
+    <ProjectReference Include="..\TLOSolution.MailService\TLOSolution.MailService.csproj" />
   </ItemGroup>
 
 </Project>

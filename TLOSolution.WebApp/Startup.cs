@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TLOSoltuion.Data.EF;
 using TLOSoltuion.Data.Entities;
+using TLOSolution.MailService;
 
 namespace TLOSolution.WebApp
 {
@@ -34,8 +35,28 @@ namespace TLOSolution.WebApp
             services.AddDbContext<TLODbContext>(opts =>
                 opts.UseSqlServer(Configuration.GetConnectionString("TLODb")));
 
-            services.AddIdentity<User, IdentityRole>()
-             .AddEntityFrameworkStores<TLODbContext>();
+            services.AddIdentity<User, IdentityRole>(opt =>
+            {
+                opt.Password.RequiredLength = 6;
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireUppercase = false;
+                opt.User.RequireUniqueEmail = true;
+            })
+             .AddEntityFrameworkStores<TLODbContext>()
+             .AddDefaultTokenProviders();
+
+
+            services.Configure<DataProtectionTokenProviderOptions>(opt =>
+               opt.TokenLifespan = TimeSpan.FromHours(2));
+            //mail service
+
+            var emailConfig = Configuration
+                .GetSection("EmailConfiguration")
+                .Get<EmailConfiguration>();
+
+            services.AddSingleton(emailConfig);
+            services.AddScoped<IEmailSender, EmailSender>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
