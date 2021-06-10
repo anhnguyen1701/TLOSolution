@@ -21,8 +21,65 @@ namespace TLOSolution.WebApp.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
+            var posts = from p in _context.Post
+                        select p;
+
+            var categories = from c in _context.Category
+                             select c;
+
+            var reponse1 = await categories.Select(x => new CategoryViewModel
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToListAsync();
+
+            var reponse = await posts.Select(x => new IndexViewModel
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Description = x.Description,
+                DocumentPath = x.DocumentPath,
+                CategoryName = x.Category.Name,
+                PublisherName = x.User.FirstName + " " + x.User.LastName,
+                DocumentType = x.DocumentType,
+                DowloadCount = x.DowloadCount,
+                ViewCount = x.ViewCount
+            }).ToListAsync();
+
+            var reponseResult = new IndexCustomViewModel
+            {
+                CategoryViewModel = reponse1,
+                IndexViewModel = reponse
+            };
+            return View(reponseResult);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(string request)
+        {
+            var posts = from p in _context.Post
+                        select p;
+
+            if (String.IsNullOrEmpty(request))
+            {
+                posts = posts.Where(r => r.Title.Contains(request));
+                var reponse = await posts.Select(x => new IndexViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Description = x.Description,
+                    DocumentPath = x.DocumentPath,
+                    CategoryName = x.Category.Name,
+                    PublisherName = x.User.FirstName + " " + x.User.LastName,
+                    DocumentType = x.DocumentType,
+                    DowloadCount = x.DowloadCount,
+                    ViewCount = x.ViewCount
+                }).ToListAsync();
+                return View(reponse);
+            }
             return View();
         }
 
@@ -31,10 +88,5 @@ namespace TLOSolution.WebApp.Controllers
             var posts = await _context.Post.ToListAsync();
             return View(posts);
         }
-
-       /* public async Task<IActionResult> Search(string request)
-        {
-
-        }*/
     }
 }

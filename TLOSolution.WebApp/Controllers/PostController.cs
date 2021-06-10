@@ -26,7 +26,7 @@ namespace TLOSolution.WebApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult> Details(int id)
         {
             var result = await _context.Post.Where(x => x.Id == id).FirstOrDefaultAsync();
             if (result == null)

@@ -1,9 +1,91 @@
-﻿@{
+﻿@model IndexCustomViewModel
+@{
     ViewData["Title"] = "Home Page";
+    var postList = Model.IndexViewModel;
+    var categoryList = Model.CategoryViewModel;
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <a href="@Url.Action("Detail", "Post", new { id = 1})">
+
+    <form asp-controller="Home" asp-action="Index" method="post">
+        <p>
+
+            <select>
+                @foreach (var item in categoryList)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+
+            @*<input type="text" asp-for="SearchString" />*@
+            <butotn type="submit">submit</butotn>
+        </p>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    DocumentPath
+                </th>
+                <th>
+                    CategoryName
+                </th>
+                <th>
+                    PubliserName
+                </th>
+                <th>
+                    DocumentType
+                </th>
+                <th>
+                    DowloadCount
+                </th>
+                <th>
+                    ViewCount
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in postList)
+            {
+                <tr>
+                    <td>
+                        @item.Title
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        <iframe src="@item.DocumentPath"></iframe>
+                    </td>
+                    <td>
+                        @item.CategoryName
+                    </td>
+                    <td>
+                        @item.PublisherName
+                    </td>
+                    <td>
+                        @item.DocumentType
+                    </td>
+                    <td>
+                        @item.DowloadCount
+                    </td>
+                    <td>
+                        @item.ViewCount
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Post" asp-route-id="@item.Id">Details</a> |
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
