@@ -1,0 +1,348 @@
+a{
+    text-decoration: none !important;
+}
+
+.back-ground :nth-child(1){
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-color: #0000009c;
+}
+
+.back-ground{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0%;
+    z-index: 2;
+    background-image: url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGlicmFyeXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80);
+}
+.login{
+    position: fixed;
+    z-index: 10;
+    left: 32%;
+    top: 15%;
+}
+.login img{
+    width: 320px;
+    height: 90px;
+    display: flex;
+    margin: auto;
+}
+.login-account{
+    background-color: white;
+    margin-top: 25px;
+    width: 490px;
+    height: 346px;
+    padding: 15px 2rem;
+}
+
+.login-account span.span{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.form{
+    margin-top: 2rem;
+}
+
+
+.btn-sign-in{
+    display: block;
+    width: 100%;
+    border-radius: 50px;
+    margin: 10px 0px;
+}
+
+.sign-up{
+    display: flex;
+    justify-content: center;
+}
+.sign-up span{
+    font-size: 13px;
+}
+.sign-up a.sign-up1{
+    margin-left: 3px;
+}
+.sign-up a.sign-up1:hover{
+    color: #FE4066;
+}
+
+.login a{
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.login a.forgot{
+    position: relative;
+}
+
+.login a.forgot:hover{
+    color: #FE4066;
+}
+
+
+.sign-in-with{
+    position: fixed;
+    z-index: 10;
+    background-color: white;
+    top: 78%;
+    left: 32%;
+    width: 490px;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    justify-content: space-between;
+}
+.sign-in-with span{
+    font-size: 15px;
+    color: #808080d1;
+}
+
+
+
+.sign-in-with a{
+    margin-left: 15px;
+}
+.sign-in-with a img{
+    width: 32px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+/* ================Dang ky==================== */
+.new-account{
+    position: relative;
+    z-index: 30;
+}
+
+.new-account .back-ground1 :nth-child(1){position: fixed;top: 0;width: 100%;height: 100%;left: 0;background-color: rgb(0 0 0 / 55%);}
+
+.new-account .back-ground1{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0%;
+    z-index: 2;
+    background-image: url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGlicmFyeXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80);
+}
+
+.create-acc{
+    width: 100%;
+    position: absolute;
+    top: 126px;
+    display: flex;
+    justify-content: center;
+    z-index: 4;
+}
+
+.create-acc .form{
+    background-color: white;
+    box-shadow: 1px 5px 1px 1px grey;
+    border-radius: 6px;
+    padding: 40px 25px;
+}
+
+.btn-sign-in1{
+    display: flex;
+    margin: auto;
+    padding: 10px 65px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.form-text{
+    display: flex;
+    justify-content: space-between;
+}
+.form-text h2{
+    margin-bottom: 17px;
+}
+
+
+
+/* ====================Forgot============================== */
+
+.forgot1{
+    position: fixed;
+    z-index: 40;
+    height: 100%;
+    width: 100%;
+    background-image: url(https://wallpaperaccess.com/full/253390.jpg);
+}
+
+.back-ground2{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #0000005c;
+}
+.forgot1__password{
+    position: absolute;
+    width: 490px;
+    top: 25%;
+    left: 36%;
+    background-color: white;
+    padding: 2rem 1rem;
+}
+.forgot1__text h3{
+    display: flex;
+    justify-content: center;
+    font-size: 23px;
+}
+.forgot1__text p{
+    display: flex;
+    font-size: 14px;
+    font-family: segoe ui;
+    justify-content: center;
+    color: gray;
+}
+.forgot1__image{
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+.forgot1__image img{
+    width: 100px;
+    height: 100px;
+}
+
+.forgot1__input{
+    margin-top: 25px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+
+
+ul.forgot1__input{
+    padding: 0;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+ul.forgot1__input li{
+
+list-style: none;
+
+width: 16%;
+
+padding: 0 11px;
+}
+
+.btn-forgot1{
+    display: flex;
+    margin: auto;
+    padding: 10px 60px;
+    border-radius: 50px;
+}
+
+.forgot1.show{
+    opacity: 1;
+    visibility: visible;
+}
+
+.remember__password{
+    display: flex;
+    justify-content: center;
+}
+.remember__password span{
+    font-size: 12px;
+}
+.remember__password > a{
+    font-size: 12px;
+    margin-left: 7px;
+    color: black;
+}
+.remember__password > a:hover{
+    color: #FE4066 !important;
+}
+
+/* ===============animation=================== */
+
+.forgot1__icon{
+    
+    position: absolute;
+        
+    top: 48%;
+        
+    right: 36%;
+    opacity: 0;
+    visibility: hidden;
+    
+    }
+
+    .forgot1__icon.show{
+        animation: icon__move 2s infinite;
+    }    
+
+    @keyframes icon__move {
+        0%{
+            opacity: 1;
+            visibility: visible;
+        }
+        30%{
+            top: 43%;
+            right: 32%;
+            opacity: 1;
+            visibility: visible;
+        }
+        50%{
+            top: 43%;
+            right: 32%;
+            transform: rotateZ(45deg);
+        }
+        100%{
+            top: 43%;
+            right: 0%;
+            transform: rotateZ(45deg);
+        }
+    }
+
+    .forgot1__icon.show--1{
+        animation: icon__scale 1s ;
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+    @keyframes icon__scale {
+        0%{
+            transform: scale(0.01);
+        }
+        100%{
+            transform: scale(1);
+
+        }
+    }
+.home h1{
+    color: white !important;
+    z-index: 1000;
+}
+.back-home--h1{
+    position: absolute;
+    font-size: 17px;
+    left: 23px;
+    color: green;
+}
+.back-home{
+    margin-bottom: 40px;
+    display: flex;
+    position: relative;
+}
+.back-home i{
+    position: absolute;
+    left: 0;
+    top: 4px;
+    color: green;
+}
+.back-home--h1:hover{
+    color: red;
+}
