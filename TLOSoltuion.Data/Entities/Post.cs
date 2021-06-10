@@ -36,6 +36,9 @@ namespace TLOSoltuion.Data.Entities
         public int CategoryId { get; set; }
 
         [Required]
+        public string ImagePath { get; set; }
+
+        [Required]
         [ForeignKey("UserId")]
         public User User { get; set; }
 

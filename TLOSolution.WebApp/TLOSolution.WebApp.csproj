@@ -9,4 +9,9 @@
     <ProjectReference Include="..\TLOSolution.MailService\TLOSolution.MailService.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\image-content\category\" />
+    <Folder Include="wwwroot\image-content\post\" />
+  </ItemGroup>
+
 </Project>

@@ -33,7 +33,7 @@ namespace TLOSolution.WebApp.Controllers
             var reponse1 = await categories.Select(x => new CategoryViewModel
             {
                 Id = x.Id,
-                Name = x.Name
+                Name = x.Name,
             }).ToListAsync();
 
             var reponse = await posts.Select(x => new IndexViewModel
@@ -46,7 +46,8 @@ namespace TLOSolution.WebApp.Controllers
                 PublisherName = x.User.FirstName + " " + x.User.LastName,
                 DocumentType = x.DocumentType,
                 DowloadCount = x.DowloadCount,
-                ViewCount = x.ViewCount
+                ViewCount = x.ViewCount,
+                ImagePath = x.ImagePath
             }).ToListAsync();
 
             var reponseResult = new IndexCustomViewModel
@@ -76,7 +77,8 @@ namespace TLOSolution.WebApp.Controllers
                     PublisherName = x.User.FirstName + " " + x.User.LastName,
                     DocumentType = x.DocumentType,
                     DowloadCount = x.DowloadCount,
-                    ViewCount = x.ViewCount
+                    ViewCount = x.ViewCount,
+                    ImagePath = x.ImagePath
                 }).ToListAsync();
                 return View(reponse);
             }

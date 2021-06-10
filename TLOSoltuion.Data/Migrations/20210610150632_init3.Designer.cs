@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TLOSoltuion.Data.EF;
 
 namespace TLOSoltuion.Data.Migrations
 {
     [DbContext(typeof(TLODbContext))]
-    partial class TLODbContextModelSnapshot : ModelSnapshot
+    [Migration("20210610150632_init3")]
+    partial class init3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,22 +50,22 @@ namespace TLOSoltuion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c0bfa98c-42ef-45c8-a459-3c7cdd943655",
-                            ConcurrencyStamp = "2d52f129-af07-4136-ad25-960bb7a82350",
+                            Id = "46a7a383-44c6-4c66-badd-6e612931c47f",
+                            ConcurrencyStamp = "033a7f1a-8b30-434b-a006-cfe00a148dfd",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "05b6468d-489f-49a3-b2b7-58761b249566",
-                            ConcurrencyStamp = "36507cb4-e75d-4117-b95a-7b3aa777ab6c",
+                            Id = "acfc191f-2875-4d66-8cc0-39ba9bffc9f7",
+                            ConcurrencyStamp = "6b3873e5-bb11-427a-8b9d-b091246718f4",
                             Name = "Publisher",
                             NormalizedName = "PUBLISHER"
                         },
                         new
                         {
-                            Id = "12578aed-2d84-4fd8-8b06-c2e8eb738ab1",
-                            ConcurrencyStamp = "6076f60f-bee4-4b5f-baa7-7510653ae9a0",
+                            Id = "fa9f441c-7a7b-4f94-b240-8c10c1416953",
+                            ConcurrencyStamp = "73eb9bd7-476c-4e77-872d-b2a8896cf9e7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -180,7 +182,7 @@ namespace TLOSoltuion.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Descriptopn")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
