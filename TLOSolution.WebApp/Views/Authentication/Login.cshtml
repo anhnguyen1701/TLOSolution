@@ -1,33 +1,44 @@
 ﻿@model UserLoginModel
-<h1>Login</h1>
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label">Username</label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+<div class="back-ground">
+    <div></div>
+</div>
+<div id="data-login" class="">
+    <div class="login">
+        <img src="https://cmmsv1.github.io/CNPM.github.io/logo.png" alt="" class="logo">
+        <form class="login-account">
+            <div class="back-home">
+              <i class="far fa-arrow-alt-circle-left"></i>
+              <a href="index.html"><h3 class="back-home--h1">Trở về trang chủ</h3></a>
+            </div> 
+            <span class="span">Đăng nhập vào Tailieuonline.com</span>
+            <div class="form-group form">
+                <input type="email" class="form-control input" id="InputEmail" placeholder="Email">
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+            <div class="form-group form">
+                <input type="password" class="form-control input" id="InputPassword" placeholder="Mật khẩu">
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="RememberMe" /> Remember me
-                </label>
+            <a href="./forgot-password.html" class="forgot" id="data-forgot">Quên mật khẩu</a>
+            <div class="form-group form-size d-none">
+                <input type="email" class="form-control" id="inputemail1" placeholder="Email">
+                <button type="submit" class="btn btn-forgot" style="background-color: #FE4066; color: white;">Gửi về
+                    Email</button>
             </div>
-            <div class="form-group">
-                <a asp-action="ForgotPassword">Forgot Password</a>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Log In" class="btn btn-primary" />
+            <a href="afterLogin.html"><button type="button" id="sign-in" class="btn btn-sign-in"
+                    style="background-color: #FE4066 ;color: white">Đăng nhập</button></a>
+            <div class="sign-up">
+                <span>Bạn chưa có tài khoản?</span>
+                <a href="Register.html" type="button" class="sign-up1" id="data-create">Đăng ký</a>
             </div>
         </form>
     </div>
+    <div class="sign-in-with">
+        <span>Đăng nhập bằng</span>
+        <div>
+            <a href=""><img src="https://cdn.pixabay.com/photo/2017/11/10/05/04/facebook-2935402_640.png" alt=""></a>
+            <a href=""><img src="https://user.mockplus.com/images/signin-google.png" alt=""></a>
+        </div>
+    </div>
 </div>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
