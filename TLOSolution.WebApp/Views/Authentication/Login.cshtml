@@ -1,4 +1,9 @@
 ﻿@model UserLoginModel
+
+@{
+    Layout = "_Layout2";
+}
+
 <div class="back-ground">
     <div></div>
 </div>
@@ -7,9 +12,9 @@
         <img src="https://cmmsv1.github.io/CNPM.github.io/logo.png" alt="" class="logo">
         <form class="login-account">
             <div class="back-home">
-              <i class="far fa-arrow-alt-circle-left"></i>
-              <a href="index.html"><h3 class="back-home--h1">Trở về trang chủ</h3></a>
-            </div> 
+                <i class="far fa-arrow-alt-circle-left"></i>
+                <a href="index.html"><h3 class="back-home--h1">Trở về trang chủ</h3></a>
+            </div>
             <span class="span">Đăng nhập vào Tailieuonline.com</span>
             <div class="form-group form">
                 <input type="email" class="form-control input" id="InputEmail" placeholder="Email">
@@ -20,11 +25,17 @@
             <a href="./forgot-password.html" class="forgot" id="data-forgot">Quên mật khẩu</a>
             <div class="form-group form-size d-none">
                 <input type="email" class="form-control" id="inputemail1" placeholder="Email">
-                <button type="submit" class="btn btn-forgot" style="background-color: #FE4066; color: white;">Gửi về
-                    Email</button>
+                <button type="submit" class="btn btn-forgot" style="background-color: #FE4066; color: white;">
+                    Gửi về
+                    Email
+                </button>
             </div>
-            <a href="afterLogin.html"><button type="button" id="sign-in" class="btn btn-sign-in"
-                    style="background-color: #FE4066 ;color: white">Đăng nhập</button></a>
+            <a href="afterLogin.html">
+                <button type="button" id="sign-in" class="btn btn-sign-in"
+                        style="background-color: #FE4066 ;color: white">
+                    Đăng nhập
+                </button>
+            </a>
             <div class="sign-up">
                 <span>Bạn chưa có tài khoản?</span>
                 <a href="Register.html" type="button" class="sign-up1" id="data-create">Đăng ký</a>
@@ -40,5 +51,5 @@
     </div>
 </div>
 @section Scripts {
-@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

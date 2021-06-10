@@ -1,4 +1,9 @@
 ﻿@model UserRegisterModel
+
+@{
+    Layout = "_Layout2";
+}
+
 <div class="new-account">
     <div class="back-ground1">
         <div></div>
@@ -44,12 +49,14 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-sign-in" style="background-color: #FE4066; color: white;">Đăng
-                ký</button>
+            <button type="submit" class="btn btn-sign-in" style="background-color: #FE4066; color: white;">
+                Đăng
+                ký
+            </button>
         </form>
     </div>
 </div>
 
 @section Scripts {
-@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

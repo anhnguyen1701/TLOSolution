@@ -83,6 +83,11 @@ namespace TLOSolution.WebApp.Controllers
             return View();
         }
 
+        public IActionResult Search()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> Posts()
         {
             var posts = await _context.Post.ToListAsync();
