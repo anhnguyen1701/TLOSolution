@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using TLOSoltuion.Data.Entities;
 using TLOSolution.MailService;
@@ -40,10 +42,10 @@ namespace TLOSolution.WebApp.Controllers
 
             var user = new User()
             {
-                UserName = request.UserName,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                Email = request.Email
+                Email = request.Email,
+                UserName = request.Email
             };
 
             var result = await _userManager.CreateAsync(user, request.Password);
@@ -76,20 +78,24 @@ namespace TLOSolution.WebApp.Controllers
                 return View(request);
             }
 
-            var user = await _userManager.FindByNameAsync(request.UserName);
+            var user = await _userManager.FindByEmailAsync(request.Email);
 
             if (user == null)
             {
-                ModelState.AddModelError("", "user is not valid");
+                ModelState.AddModelError("", "email is not valid");
                 return View();
             }
 
-            var res = await _signInManager
-                .PasswordSignInAsync(user, request.Password, request.RememberMe, false);
-
-            if (res.Succeeded)
+            if(await _userManager.CheckPasswordAsync(user, request.Password))
             {
-                return RedirectToLocal(returnUrl);
+                var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
+                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
+                identity.AddClaim(new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName));
+
+                await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
+                    new ClaimsPrincipal(identity));
+
+                return RedirectToAction(nameof(HomeController.Index), "Home");
             }
             else
             {

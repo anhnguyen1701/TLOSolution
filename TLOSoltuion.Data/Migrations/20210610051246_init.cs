@@ -50,18 +50,16 @@ namespace TLOSoltuion.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Post",
+                name: "Category",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DocumentPath = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Post", x => x.Id);
+                    table.PrimaryKey("PK_Category", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -170,6 +168,53 @@ namespace TLOSoltuion.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Post",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DocumentPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DocumentType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ViewCount = table.Column<int>(type: "int", nullable: false),
+                    DowloadCount = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Post", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Post_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Post_Category_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Category",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "1da1f5a7-9839-44d0-a97c-2a18030c2517", "ed43587e-5d28-44ec-9eea-92c4dc20250c", "User", "USER" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "07b61625-b15c-4b1b-976a-6f554899b79a", "c3593c17-81a6-45ba-94e5-5a76c193eeec", "Publisher", "PUBLISHER" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "6bff8c04-e05b-4ac9-834b-1b116b0a475b", "d64b54c4-b7a0-40aa-b309-6203366c85fb", "Admin", "ADMIN" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -208,6 +253,16 @@ namespace TLOSoltuion.Data.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Post_CategoryId",
+                table: "Post",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Post_UserId",
+                table: "Post",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -235,6 +290,9 @@ namespace TLOSoltuion.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Category");
         }
     }
 }

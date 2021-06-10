@@ -14,9 +14,6 @@ namespace TLOSolution.WebApp.Models
         [Required(ErrorMessage = "LastName is required")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "UserName is required")]
-        public string UserName { get; set; }
-
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress]
         public string Email { get; set; }

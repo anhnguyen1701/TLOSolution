@@ -15,10 +15,12 @@ namespace TLOSolution.WebApp.Models
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
+        public int CategoryId { get; set; }
+
         [Required(ErrorMessage = "Chọn một file")]
         [DataType(DataType.Upload)]
         [FileExtensions(Extensions = "pdf")]
         [Display(Name = "Chọn file upload")]
-        public IFormFile DocumentPath { get; set; }
+        public IFormFile Document { get; set; }
     }
 }

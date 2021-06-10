@@ -16,6 +16,14 @@ namespace TLOSoltuion.Data.Configurations
                 {
                     Name = "User",
                     NormalizedName = "USER"
+                },
+                new IdentityRole { 
+                    Name = "Publisher",
+                    NormalizedName = "PUBLISHER"
+                },
+                new IdentityRole { 
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
                 });
         }
     }
