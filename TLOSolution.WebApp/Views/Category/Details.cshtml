@@ -1,47 +1,16 @@
-﻿@model IndexCustomViewModel
+﻿@model List<PostListViewModel>
 @{
-    ViewData["Title"] = "Trang chủ";
-    var postList = Model.PostListViewModel;
-    var categoryList = Model.CategoryViewModel;
+    ViewData["Title"] = "Home Page";
 }
 
 <div id="main">
-    <div id="slider">
-        <div>
-            <img id="img" src="image/slider/1.jpg" alt="">
-        </div>
-    </div>
-    <hr />
-
     <div id="content">
-
-        <div class="first-content">
-            <h1 class="first-content h1">DANH MỤC TÀI LIỆU</h1>
-            <div class="container">
-                <div class="row">
-                    @foreach (var item in categoryList)
-                    {
-                        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15">
-                            <a href="@Url.Action("Details", "Category", new { id = item.Id})" class="content-a">
-                                <img class="img-item" src="@item.ImagePath" alt="">
-                                <h3>@item.Name</h3>
-                                <p>@item.Description</p>
-                            </a>
-                        </div>
-                    }
-
-                </div>
-            </div>
-        </div>
-        <hr />
-
         <!-- Tất cả -->
         <div class="content-item">
             <h1 class="content-item h1">TẤT CẢ</h1>
             <div class="container">
                 <div class="row">
-
-                    @foreach (var item in postList)
+                    @foreach (var item in Model)
                     {
                         <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 mh300">
                             <div class="box">
@@ -222,7 +191,7 @@
                 </div>
             </div>
         </div>
+
+        <hr />
+        <!-- footer -->
     </div>
-    <hr />
-    <!-- footer -->
-</div>

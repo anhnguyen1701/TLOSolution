@@ -7,7 +7,7 @@ namespace TLOSolution.WebApp.Models
 {
     public class IndexCustomViewModel
     {
-        public List<IndexViewModel> IndexViewModel { get; set; }
+        public List<PostListViewModel> PostListViewModel { get; set; }
         public List<CategoryViewModel> CategoryViewModel { get; set; }
     }
 }

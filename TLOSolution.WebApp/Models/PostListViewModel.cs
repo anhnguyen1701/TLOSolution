@@ -6,7 +6,7 @@ using TLOSoltuion.Data.Entities;
 
 namespace TLOSolution.WebApp.Models
 {
-    public class IndexViewModel
+    public class PostListViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -17,10 +17,6 @@ namespace TLOSolution.WebApp.Models
         public int DowloadCount { get; set; }
         public string PublisherName { get; set; }
         public string CategoryName { get; set; }
-
         public string ImagePath { get; set; }
-
-        public List<Category> categories { get; set; }
-
     }
 }

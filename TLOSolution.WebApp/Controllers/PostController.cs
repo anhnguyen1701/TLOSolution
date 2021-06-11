@@ -29,6 +29,7 @@ namespace TLOSolution.WebApp.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var result = await _context.Post.Where(x => x.Id == id).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(x => x.Id == result.UserId).FirstOrDefaultAsync();
             if (result == null)
             {
                 return View();
@@ -38,7 +39,10 @@ namespace TLOSolution.WebApp.Controllers
             {
                 Title = result.Title,
                 Description = result.Description,
-                DocumentPath = result.DocumentPath
+                DocumentPath = result.DocumentPath,
+                DowloadCount = result.DowloadCount,
+                PublisherName = user.FirstName + " " + user.LastName,
+                ViewCount = result.ViewCount
             };
 
             return View(post);

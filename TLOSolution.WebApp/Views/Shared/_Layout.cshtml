@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - IdentityByExamples</title>
+    <title>@ViewData["Title"] | Tailieuonline.com</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/controller.css" />
     <link rel="stylesheet" href="~/css/style.css" />
@@ -14,7 +14,7 @@
 <body>
     <div id="header">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark flex">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
                 <img src="/image/logo.png" alt="">
             </a>
             <div class="search-main">
@@ -46,8 +46,8 @@
                 </div>
             </div>
             <div class="btn-control">
-                <button type="button" class="btn btn-outline-primary" id="login">Đăng nhập</button>
-                <button type="button" class="btn btn-outline-success" id="register">Đăng ký</button>
+                <a type="button" class="btn btn-outline-primary" href="@Url.Action("Login", "Authentication")">Đăng nhập</a>
+                <a type="button" class="btn btn-outline-success" href="@Url.Action("Register", "Authentication")">Đăng ký</a>
             </div>
         </nav>
     </div>

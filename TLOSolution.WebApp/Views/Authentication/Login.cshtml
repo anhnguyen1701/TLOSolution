@@ -1,6 +1,7 @@
 ﻿@model UserLoginModel
 
 @{
+    ViewData["Title"] = "Đăng nhập";
     Layout = "_Layout2";
 }
 
@@ -10,44 +11,28 @@
 <div id="data-login" class="">
     <div class="login">
         <img src="https://cmmsv1.github.io/CNPM.github.io/logo.png" alt="" class="logo">
-        <form class="login-account">
+        <form class="login-account" asp-action="Login">
             <div class="back-home">
                 <i class="far fa-arrow-alt-circle-left"></i>
-                <a href="index.html"><h3 class="back-home--h1">Trở về trang chủ</h3></a>
+                <a href="@Url.Action("Index", "Home")"><h3 class="back-home--h1">Trở về trang chủ</h3></a>
             </div>
             <span class="span">Đăng nhập vào Tailieuonline.com</span>
             <div class="form-group form">
-                <input type="email" class="form-control input" id="InputEmail" placeholder="Email">
+                <input asp-for="Email" type="email" class="form-control input" id="InputEmail" placeholder="Email">
             </div>
             <div class="form-group form">
-                <input type="password" class="form-control input" id="InputPassword" placeholder="Mật khẩu">
+                <input asp-for="Password" type="password" class="form-control input" id="InputPassword" placeholder="Mật khẩu">
             </div>
-            <a href="./forgot-password.html" class="forgot" id="data-forgot">Quên mật khẩu</a>
-            <div class="form-group form-size d-none">
-                <input type="email" class="form-control" id="inputemail1" placeholder="Email">
-                <button type="submit" class="btn btn-forgot" style="background-color: #FE4066; color: white;">
-                    Gửi về
-                    Email
-                </button>
-            </div>
-            <a href="afterLogin.html">
-                <button type="button" id="sign-in" class="btn btn-sign-in"
-                        style="background-color: #FE4066 ;color: white">
-                    Đăng nhập
-                </button>
-            </a>
+            <a href="@Url.Action("ForgotPassword","Authentication")" class="forgot" id="data-forgot">Quên mật khẩu</a>
+
+            <button type="submit" class="btn btn-sign-in" style="background-color: #FE4066 ;color: white">
+                Đăng nhập
+            </button>
             <div class="sign-up">
                 <span>Bạn chưa có tài khoản?</span>
-                <a href="Register.html" type="button" class="sign-up1" id="data-create">Đăng ký</a>
+                <a href="@Url.Action("Register", "Authentication")" type="button" class="sign-up1">Đăng ký</a>
             </div>
         </form>
-    </div>
-    <div class="sign-in-with">
-        <span>Đăng nhập bằng</span>
-        <div>
-            <a href=""><img src="https://cdn.pixabay.com/photo/2017/11/10/05/04/facebook-2935402_640.png" alt=""></a>
-            <a href=""><img src="https://user.mockplus.com/images/signin-google.png" alt=""></a>
-        </div>
     </div>
 </div>
 @section Scripts {
