@@ -48,22 +48,22 @@ namespace TLOSoltuion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1da1f5a7-9839-44d0-a97c-2a18030c2517",
-                            ConcurrencyStamp = "ed43587e-5d28-44ec-9eea-92c4dc20250c",
+                            Id = "c0bfa98c-42ef-45c8-a459-3c7cdd943655",
+                            ConcurrencyStamp = "2d52f129-af07-4136-ad25-960bb7a82350",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "07b61625-b15c-4b1b-976a-6f554899b79a",
-                            ConcurrencyStamp = "c3593c17-81a6-45ba-94e5-5a76c193eeec",
+                            Id = "05b6468d-489f-49a3-b2b7-58761b249566",
+                            ConcurrencyStamp = "36507cb4-e75d-4117-b95a-7b3aa777ab6c",
                             Name = "Publisher",
                             NormalizedName = "PUBLISHER"
                         },
                         new
                         {
-                            Id = "6bff8c04-e05b-4ac9-834b-1b116b0a475b",
-                            ConcurrencyStamp = "d64b54c4-b7a0-40aa-b309-6203366c85fb",
+                            Id = "12578aed-2d84-4fd8-8b06-c2e8eb738ab1",
+                            ConcurrencyStamp = "6076f60f-bee4-4b5f-baa7-7510653ae9a0",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -180,6 +180,14 @@ namespace TLOSoltuion.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Imagepath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -213,6 +221,10 @@ namespace TLOSoltuion.Data.Migrations
 
                     b.Property<int>("DowloadCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()

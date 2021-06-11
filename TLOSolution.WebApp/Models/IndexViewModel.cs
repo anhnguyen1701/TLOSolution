@@ -18,6 +18,8 @@ namespace TLOSolution.WebApp.Models
         public string PublisherName { get; set; }
         public string CategoryName { get; set; }
 
+        public string ImagePath { get; set; }
+
         public List<Category> categories { get; set; }
 
     }
