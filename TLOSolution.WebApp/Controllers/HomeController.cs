@@ -34,9 +34,11 @@ namespace TLOSolution.WebApp.Controllers
             {
                 Id = x.Id,
                 Name = x.Name,
+                Description = x.Description,
+                ImagePath = x.Imagepath
             }).ToListAsync();
 
-            var reponse = await posts.Select(x => new IndexViewModel
+            var reponse = await posts.Select(x => new PostListViewModel
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -53,7 +55,7 @@ namespace TLOSolution.WebApp.Controllers
             var reponseResult = new IndexCustomViewModel
             {
                 CategoryViewModel = reponse1,
-                IndexViewModel = reponse
+                PostListViewModel = reponse
             };
             return View(reponseResult);
         }
@@ -67,7 +69,7 @@ namespace TLOSolution.WebApp.Controllers
             if (String.IsNullOrEmpty(request))
             {
                 posts = posts.Where(r => r.Title.Contains(request));
-                var reponse = await posts.Select(x => new IndexViewModel
+                var reponse = await posts.Select(x => new PostListViewModel()
                 {
                     Id = x.Id,
                     Title = x.Title,
@@ -82,6 +84,11 @@ namespace TLOSolution.WebApp.Controllers
                 }).ToListAsync();
                 return View(reponse);
             }
+            return View();
+        }
+
+        public IActionResult Search()
+        {
             return View();
         }
 
