@@ -1,6 +1,6 @@
 ﻿@model List<PostListViewModel>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Model.FirstOrDefault().CategoryName;
 }
 
 <div id="main">
