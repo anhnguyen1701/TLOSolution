@@ -13,32 +13,49 @@
 
 <body>
     <div id="header">
-        <nav class="navbar1">
-            <div class="flex">
-                <div class="logo" id="logo">
-                    <img src="~/image/logo.png" alt="">
-                </div>
-                <div class="search-main">
-                    <div class="search-main_data">
-                        <input type="text" placeholder="Từ khóa ...">
-                        <i id="search-icon" class="fas fa-search"></i>
-                    </div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark flex">
+            <a class="navbar-brand" href="index.html">
+                <img src="/image/logo.png" alt="">
+            </a>
+            <div class="search-main">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Danh mục
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Luận văn - Báo cáo</a><hr>
+                            <a class="dropdown-item" href="#">Kỹ năng mềm</a><hr>
+                            <a class="dropdown-item" href="#">Kinh doanh - Tiếp thị</a><hr>
+                            <a class="dropdown-item" href="#">Kinh tế - Quản lý</a><hr>
+                            <a class="dropdown-item" href="#">Tài chính - Ngân hàng</a><hr>
+                            <a class="dropdown-item" href="#">Biểu mẫu - Văn bản</a><hr>
+                            <a class="dropdown-item" href="#">Giáo dục - Đào tạo</a><hr>
+                            <a class="dropdown-item" href="#">Giáo án - Bài giảng</a><hr>
+                            <a class="dropdown-item" href="#">Công nghệ thông tin</a><hr>
+                            <a class="dropdown-item" href="#">Văn bản pháp luật</a><hr>
+                            <a class="dropdown-item" href="#">Học tiếng anh</a><hr>
+                            <a class="dropdown-item" href="#">Các bài văn khấn nôm</a><hr>
 
+                        </div>
+                    </li>
+                </ul>
+                <div class="search-menu">
+                    <input class="search-input" type="text" placeholder="Search">
+                    <i id="search-icon" class="fas fa-search"></i>
                 </div>
-                <div id="button">
-                    <div class="button-main">
-                        <button type="button" class="btn-main primary" id="login ">Đăng nhập</button>
-                        <button type="button" class="btn-main success" id="register">Đăng kí</button>
-                    </div>
-                </div>
+            </div>
+            <div class="btn-control">
+                <button type="button" class="btn btn-outline-primary" id="login">Đăng nhập</button>
+                <button type="button" class="btn btn-outline-success" id="register">Đăng ký</button>
             </div>
         </nav>
     </div>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
     <div id="footer">
         <div class="container">
 
