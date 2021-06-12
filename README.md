@@ -12,7 +12,7 @@
 - Set startup project is TLOSolution.Data
 - Change connection string in Appsetting.json in TLOSolution.Data project
 - Open Tools --> Nuget Package Manager -->  Package Manager Console in Visual Studio
-- Open Package Manage Console and type "update-database" and Enter
+- Open Package Manage Console and type "update-database" then press Enter
 - After migrate database successful, set Startup Project is TLOSolution.WebApp
 - Change database connection in appsettings.json in TLOSolution.WebApp project.
 - Rrun or press F5
