@@ -29,7 +29,7 @@ namespace TLOSolution.WebApp.Controllers
                 return View();
             }
 
-            var posts = await result.Select(x => new PostListViewModel()
+            var posts = await result.Select(x => new PostViewModel()
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -43,7 +43,23 @@ namespace TLOSolution.WebApp.Controllers
                 ImagePath = x.ImagePath
             }).ToListAsync();
 
-            return View(posts);
+            var categories = from c in _context.Category
+                             select c;
+
+            var categoriesRes = await categories.Select(x => new CategoryViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                ImagePath = x.Imagepath
+            }).ToListAsync();
+
+            var CategoryDetail = new CategoryDetailViewModel()
+            {   Categories = categoriesRes,
+                Posts = posts
+            };
+
+            return View(CategoryDetail);
         }
     }
 }

@@ -3,7 +3,6 @@
 @{
     Layout = "_Layout2";
     ViewData["Title"] = "Đăng ký";
-
 }
 
 <div class="new-account">
@@ -15,7 +14,7 @@
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-text">
                 <h2>Đăng ký</h2>
-                <a href="index.html">
+                <a href="@Url.Action("Index", "Home")">
                     <div class="cancel"><i class="fa fa-times" aria-hidden="true" id="data-cancel"></i></div>
                 </a>
             </div>

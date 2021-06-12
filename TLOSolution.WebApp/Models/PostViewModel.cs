@@ -6,7 +6,7 @@ using TLOSoltuion.Data.Entities;
 
 namespace TLOSolution.WebApp.Models
 {
-    public class PostListViewModel
+    public class PostViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -30,7 +31,7 @@ namespace TLOSolution.WebApp.Controllers
             var categories = from c in _context.Category
                              select c;
 
-            var reponse1 = await categories.Select(x => new CategoryViewModel
+            var categoriesRes = await categories.Select(x => new CategoryViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -38,7 +39,7 @@ namespace TLOSolution.WebApp.Controllers
                 ImagePath = x.Imagepath
             }).ToListAsync();
 
-            var reponse = await posts.Select(x => new PostListViewModel
+            var postsRes = await posts.Select(x => new PostViewModel
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -52,44 +53,65 @@ namespace TLOSolution.WebApp.Controllers
                 ImagePath = x.ImagePath
             }).ToListAsync();
 
-            var reponseResult = new IndexCustomViewModel
+            var reponse = new SearchReponseViewModel
             {
-                CategoryViewModel = reponse1,
-                PostListViewModel = reponse
+                Categories = categoriesRes,
+                Posts = postsRes
             };
-            return View(reponseResult);
+
+            return View(reponse);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Index(string request)
+        [HttpGet]
+        public async Task<IActionResult> Search(SearchRequestViewModel request)
         {
+            var categories = from c in _context.Category
+                             select c;
+
+            var categoriesRes = await categories.Select(x => new CategoryViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                ImagePath = x.Imagepath
+            }).ToListAsync();
+
             var posts = from p in _context.Post
                         select p;
 
-            if (String.IsNullOrEmpty(request))
+            if(!string.IsNullOrEmpty(request.InputString))
             {
-                posts = posts.Where(r => r.Title.Contains(request));
-                var reponse = await posts.Select(x => new PostListViewModel()
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Description = x.Description,
-                    DocumentPath = x.DocumentPath,
-                    CategoryName = x.Category.Name,
-                    PublisherName = x.User.FirstName + " " + x.User.LastName,
-                    DocumentType = x.DocumentType,
-                    DowloadCount = x.DowloadCount,
-                    ViewCount = x.ViewCount,
-                    ImagePath = x.ImagePath
-                }).ToListAsync();
-                return View(reponse);
+                posts = posts.Where(p => p.Title.Contains(request.InputString));
             }
-            return View();
-        }
 
-        public IActionResult Search()
-        {
-            return View();
+            if(request.CategoryId != null)
+            {
+                posts = posts.Where(p => p.CategoryId == request.CategoryId);
+            }
+
+            var postsRes = await posts.Select(x => new PostViewModel
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Description = x.Description,
+                DocumentPath = x.DocumentPath,
+                CategoryName = x.Category.Name,
+                PublisherName = x.User.FirstName + " " + x.User.LastName,
+                DocumentType = x.DocumentType,
+                DowloadCount = x.DowloadCount,
+                ViewCount = x.ViewCount,
+                ImagePath = x.ImagePath
+            }).ToListAsync();
+
+            var response = new SearchReponseViewModel()
+            {
+                Categories = categoriesRes,
+                Posts = postsRes,
+                CategoryId = request.CategoryId,
+                CategoryTitle = postsRes[0].CategoryName
+            };
+
+            return View(response);
         }
 
         public async Task<IActionResult> Posts()

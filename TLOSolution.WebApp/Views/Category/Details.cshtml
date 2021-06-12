@@ -1,6 +1,6 @@
-﻿@model List<PostListViewModel>
+﻿@model CategoryDetailViewModel
 @{
-    ViewData["Title"] = Model.FirstOrDefault().CategoryName;
+    ViewData["Title"] = Model.Posts.FirstOrDefault().CategoryName;
 }
 
 <div id="main">
@@ -10,7 +10,7 @@
             <h1 class="content-item h1">TẤT CẢ</h1>
             <div class="container">
                 <div class="row">
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Posts)
                     {
                         <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 mh300">
                             <div class="box">

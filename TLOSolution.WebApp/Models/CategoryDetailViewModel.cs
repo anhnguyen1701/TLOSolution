@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace TLOSolution.WebApp.Models
 {
-    public class SelectOptionCateogryViewModel
+    public class CategoryDetailViewModel : SearchBaseViewModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public List<PostViewModel> Posts { get; set; }
     }
 }

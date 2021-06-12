@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TLOSolution.WebApp.Models
 {
-    public class PostDetailModel
+    public class PostDetailModel : SearchBaseViewModel
     {
         public string Title { get; set; }
         public string Description { get; set; }
