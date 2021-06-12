@@ -128,7 +128,8 @@ namespace TLOSolution.WebApp.Controllers
             var user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null)
             {
-                return RedirectToAction(nameof(ForgotPasswordConfirmation));
+                ModelState.AddModelError("", "Email không tồn tại");
+                return View();
             }
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
