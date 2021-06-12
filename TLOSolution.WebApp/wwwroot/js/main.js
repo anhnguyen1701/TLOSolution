@@ -1,3 +1,8 @@
+function submit_form() {
+    var form = document.getElementById("my_form99");
+    form.submit();
+}
+
 var index = 1;
 changeImg = function () {
 
@@ -31,12 +36,6 @@ if (register) {
     }, false);
 }
 
-var search = document.getElementById('search-icon');
-if (search) {
-    search.addEventListener('click', () => {
-        location.replace("Search.html");
-    }, false);
-}
 const views4 = document.getElementsByClassName("text-h3");
 for (var i = 0; i < views4.length; i++) {
     views4[i].addEventListener('click', chuyenHuong);
@@ -50,5 +49,5 @@ function GetSelectedTextValue() {
 
     document.getElementById('CategoryId').value = selectedValue;
     return false;
-
 }
+

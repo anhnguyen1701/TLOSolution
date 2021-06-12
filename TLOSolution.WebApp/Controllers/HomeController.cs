@@ -79,12 +79,12 @@ namespace TLOSolution.WebApp.Controllers
             var posts = from p in _context.Post
                         select p;
 
-            if(!string.IsNullOrEmpty(request.InputString))
+            if (!string.IsNullOrEmpty(request.InputString))
             {
                 posts = posts.Where(p => p.Title.Contains(request.InputString));
             }
 
-            if(request.CategoryId != null)
+            if (request.CategoryId != null)
             {
                 posts = posts.Where(p => p.CategoryId == request.CategoryId);
             }
@@ -103,13 +103,27 @@ namespace TLOSolution.WebApp.Controllers
                 ImagePath = x.ImagePath
             }).ToListAsync();
 
-            var response = new SearchReponseViewModel()
+            var response = new SearchReponseViewModel() {
+                Categories = categoriesRes,
+                CategoryId = null,
+                InputString = request.InputString,
+                CategoryTitle = null,
+                Posts = null
+            };
+
+            if (postsRes.Count == 0)
+            {
+                return View(response);
+            }
+
+            response = new SearchReponseViewModel()
             {
                 Categories = categoriesRes,
                 Posts = postsRes,
                 CategoryId = request.CategoryId,
                 CategoryTitle = postsRes[0].CategoryName
             };
+
 
             return View(response);
         }
