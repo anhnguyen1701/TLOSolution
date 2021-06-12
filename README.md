@@ -15,4 +15,4 @@
 - Open Package Manage Console and type "update-database" then press Enter
 - After migrate database successful, set Startup Project is TLOSolution.WebApp
 - Change database connection in appsettings.json in TLOSolution.WebApp project.
-- Rrun or press F5
+- Run or press F5
