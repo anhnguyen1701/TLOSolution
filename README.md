@@ -1,5 +1,4 @@
-# TLOSolution
-TLOSolution is a project about website named TailieuOnline, which aggregates learning materials using .Net Core 3.1
+# ASP.NET Core 3.1 project from Team 5
 ## Technologies
 - ASP.NET Core 3.1
 - Entity Framework Core 3.1
