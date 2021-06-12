@@ -21,6 +21,7 @@ namespace TLOSoltuion.Data.EF
         }
 
         public DbSet<Post> Post { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 
 }

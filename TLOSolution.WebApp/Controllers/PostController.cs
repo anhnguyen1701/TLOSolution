@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using TLOSoltuion.Data.EF;
 using TLOSoltuion.Data.Entities;
@@ -15,30 +17,48 @@ namespace TLOSolution.WebApp.Controllers
     public class PostController : Controller
     {
         private readonly TLODbContext _context;
-        private readonly IHostingEnvironment _environment;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public PostController(TLODbContext context, IHostingEnvironment environment)
+        public PostController(TLODbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
-            _environment = environment;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var result = _context.Post.Where(x => x.Id == id).FirstOrDefault();
+            var result = await _context.Post.Where(x => x.Id == id).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(x => x.Id == result.UserId).FirstOrDefaultAsync();
             if (result == null)
             {
                 return View();
             }
 
+            var categories = from c in _context.Category
+                             select c;
+
+            var categoriesRes = await categories.Select(x => new CategoryViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                ImagePath = x.Imagepath
+            }).ToListAsync();
+
             var post = new PostDetailModel()
             {
+                Categories = categoriesRes,
                 Title = result.Title,
                 Description = result.Description,
-                DocumentPath = result.DocumentPath
+                DocumentPath = result.DocumentPath,
+                DowloadCount = result.DowloadCount,
+                PublisherName = user.FirstName + " " + user.LastName,
+                ViewCount = result.ViewCount
             };
 
+            result.ViewCount++;
+            await _context.SaveChangesAsync();
             return View(post);
         }
 
@@ -56,7 +76,7 @@ namespace TLOSolution.WebApp.Controllers
                 return;
             }
 
-            if (!await UploadFile(request.DocumentPath))
+            if (!await UploadFile(request.Document))
             {
                 ModelState.AddModelError("", "cannot upload file");
                 return;
@@ -66,7 +86,12 @@ namespace TLOSolution.WebApp.Controllers
             {
                 Title = request.Title,
                 Description = request.Description,
-                DocumentPath = request.DocumentPath.FileName
+                DocumentPath = request.Document.FileName,
+                DocumentType = request.Document.ContentType,
+                ViewCount = 0,
+                DowloadCount = 0,
+                UserId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier),
+                CategoryId = request.CategoryId
             };
 
             await _context.Post.AddAsync(post);

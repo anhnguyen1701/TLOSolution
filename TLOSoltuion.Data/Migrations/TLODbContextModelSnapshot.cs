@@ -48,10 +48,24 @@ namespace TLOSoltuion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "abe02977-2a69-4ea4-9c27-66125a7447e9",
-                            ConcurrencyStamp = "2aed20cf-16e2-4697-956e-46b3cc65494b",
+                            Id = "c0bfa98c-42ef-45c8-a459-3c7cdd943655",
+                            ConcurrencyStamp = "2d52f129-af07-4136-ad25-960bb7a82350",
                             Name = "User",
                             NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "05b6468d-489f-49a3-b2b7-58761b249566",
+                            ConcurrencyStamp = "36507cb4-e75d-4117-b95a-7b3aa777ab6c",
+                            Name = "Publisher",
+                            NormalizedName = "PUBLISHER"
+                        },
+                        new
+                        {
+                            Id = "12578aed-2d84-4fd8-8b06-c2e8eb738ab1",
+                            ConcurrencyStamp = "6076f60f-bee4-4b5f-baa7-7510653ae9a0",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
                         });
                 });
 
@@ -159,7 +173,7 @@ namespace TLOSoltuion.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("TLOSoltuion.Data.Entities.Post", b =>
+            modelBuilder.Entity("TLOSoltuion.Data.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -170,7 +184,45 @@ namespace TLOSoltuion.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Imagepath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("TLOSoltuion.Data.Entities.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DocumentPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DocumentType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DowloadCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -178,7 +230,18 @@ namespace TLOSoltuion.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ViewCount")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Post");
                 });
@@ -308,6 +371,25 @@ namespace TLOSoltuion.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TLOSoltuion.Data.Entities.Post", b =>
+                {
+                    b.HasOne("TLOSoltuion.Data.Entities.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TLOSoltuion.Data.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

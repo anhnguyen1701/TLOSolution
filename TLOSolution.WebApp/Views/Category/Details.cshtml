@@ -1,0 +1,197 @@
+﻿@model CategoryDetailViewModel
+@{
+    ViewData["Title"] = Model.Posts.FirstOrDefault().CategoryName;
+}
+
+<div id="main">
+    <div id="content">
+        <!-- Tất cả -->
+        <div class="content-item">
+            <h1 class="content-item h1">TẤT CẢ</h1>
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in Model.Posts)
+                    {
+                        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 mh300">
+                            <div class="box">
+                                <a href="@Url.Action("Details", "Post", new { id = item.Id})" class="box-image">
+                                    <i class="fas fa-file-word "></i>
+                                    <img class="img-content-item" src="@item.ImagePath" alt=""></img>
+                                </a>
+                                <div class="box-item">
+                                    <a href="@Url.Action("Details", "Post", new { id = item.Id})"><h4>@item.Title</h4></a>
+                                    <ul class="content-item--ul">
+                                        <li><i class="far fa-file-alt"> @*bỏ*@</i></li>
+                                        <li><i class="fas fa-eye"></i>  @item.ViewCount</li>
+                                        <li><i class="fas fa-download"> @item.DowloadCount</i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <!-- Tài liệu chung -->
+        <div class="content-last">
+            <div class="container">
+                <h1>TÀI LIỆU CHUNG</h1>
+                <div class="content-last--item">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <h3 class="color color1">Ngoại Ngữ</h3>
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <h3 class="color color2">Giáo Dục - Đào Tạo</h3>
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <h3 class="color color3">Kỹ Thuật - Công Nghệ</h3>
+
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <h3 class="color color4">Công Nghệ Thông Tin</h3>
+
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="content-last-list">
+                                <a href="#">
+                                    <i class="fas fa-file-word "></i>
+                                    Viết đoạn văn ngắn tiếng anh về các chủ đề cho trước
+                                    <ul class="content-item--ul pd20">
+                                        <li><i class="far fa-file-alt"> 12</i></li>
+                                        <li><i class="fas fa-eye"></i>  23,564</li>
+                                        <li><i class="fas fa-download"> 560</i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <!-- footer -->
+    </div>
