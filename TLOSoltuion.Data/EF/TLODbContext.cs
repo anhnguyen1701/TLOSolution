@@ -18,6 +18,9 @@ namespace TLOSoltuion.Data.EF
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new PostConfiguration());
         }
 
         public DbSet<Post> Post { get; set; }
