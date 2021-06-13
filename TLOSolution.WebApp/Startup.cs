@@ -41,6 +41,7 @@ namespace TLOSolution.WebApp
                 opt.Password.RequireDigit = false;
                 opt.Password.RequireUppercase = false;
                 opt.User.RequireUniqueEmail = true;
+                opt.SignIn.RequireConfirmedEmail = true;
             })
              .AddEntityFrameworkStores<TLODbContext>()
              .AddDefaultTokenProviders();

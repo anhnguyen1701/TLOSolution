@@ -50,4 +50,3 @@ function GetSelectedTextValue() {
     document.getElementById('CategoryId').value = selectedValue;
     return false;
 }
-

@@ -121,7 +121,8 @@ namespace TLOSolution.WebApp.Controllers
                 Categories = categoriesRes,
                 Posts = postsRes,
                 CategoryId = request.CategoryId,
-                CategoryTitle = postsRes[0].CategoryName
+                CategoryTitle = postsRes[0].CategoryName,
+                InputString = request.InputString
             };
 
 
