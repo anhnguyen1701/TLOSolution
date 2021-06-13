@@ -60,19 +60,14 @@ namespace TLOSolution.WebApp.Controllers
             }
 
             //register confirmation
-            ResigerSendEmailConfrim(user);
-
-            //assign role
-            await _userManager.AddToRoleAsync(user, "User");
-            return RedirectToAction("SuccessRegistration", "Authentication");
-        }
-
-        public async void ResigerSendEmailConfrim(User user)
-        {
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var confirmationLink = Url.Action(nameof(ConfirmEmail), "Authentication", new { token, email = user.Email }, Request.Scheme);
             var message = new EmailMessage(new string[] { user.Email }, "Confirmation email link", confirmationLink, null);
             await _emailSender.SendEmailAsync(message);
+
+            //assign role
+            await _userManager.AddToRoleAsync(user, "User");
+            return RedirectToAction("SuccessRegistration", "Authentication");
         }
 
         [HttpGet]
