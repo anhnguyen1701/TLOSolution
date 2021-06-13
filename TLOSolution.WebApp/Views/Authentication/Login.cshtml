@@ -12,6 +12,7 @@
     <div class="login">
         <img src="https://cmmsv1.github.io/CNPM.github.io/logo.png" alt="" class="logo">
         <form class="login-account" asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="back-home">
                 <i class="far fa-arrow-alt-circle-left"></i>
                 <a href="@Url.Action("Index", "Home")"><h3 class="back-home--h1">Trở về trang chủ</h3></a>

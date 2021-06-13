@@ -59,8 +59,42 @@ namespace TLOSolution.WebApp.Controllers
                 return View(request);
             }
 
+            //register confirmation
+            ResigerSendEmailConfrim(user);
+
+            //assign role
             await _userManager.AddToRoleAsync(user, "User");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction("SuccessRegistration", "Authentication");
+        }
+
+        public async void ResigerSendEmailConfrim(User user)
+        {
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var confirmationLink = Url.Action(nameof(ConfirmEmail), "Authentication", new { token, email = user.Email }, Request.Scheme);
+            var message = new EmailMessage(new string[] { user.Email }, "Confirmation email link", confirmationLink, null);
+            await _emailSender.SendEmailAsync(message);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(string token, string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+                return View("Error");
+
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+            return View(result.Succeeded ? nameof(ConfirmEmail) : "Error");
+        }
+
+        [HttpGet]
+        public IActionResult SuccessRegistration(User user)
+        {
+            if(user != null)
+            {
+                return View(user);
+            }
+            User model = new User();
+            return View(model);
         }
 
         [HttpGet]
@@ -86,7 +120,13 @@ namespace TLOSolution.WebApp.Controllers
                 return View();
             }
 
-            if(await _userManager.CheckPasswordAsync(user, request.Password))
+            if(!await _userManager.IsEmailConfirmedAsync(user))
+            {
+                ModelState.AddModelError("", "email is not confirmed");
+                return View();
+            }
+
+            if (await _userManager.CheckPasswordAsync(user, request.Password))
             {
                 var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
                 identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
@@ -179,6 +219,12 @@ namespace TLOSolution.WebApp.Controllers
 
         [HttpGet]
         public IActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Error()
         {
             return View();
         }
