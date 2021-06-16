@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using TLOSoltuion.Data.EF;
 using TLOSoltuion.Data.Entities;
 using TLOSolution.MailService;
 using TLOSolution.WebApp.Models;
@@ -17,12 +18,15 @@ namespace TLOSolution.WebApp.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly IEmailSender _emailSender;
+        private readonly TLODbContext _context;
 
-        public AuthenticationController(SignInManager<User> signInManager, UserManager<User> userManager, IEmailSender emailSender)
+
+        public AuthenticationController(SignInManager<User> signInManager, UserManager<User> userManager, IEmailSender emailSender, TLODbContext context)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _emailSender = emailSender;
+            _context = context;
         }
 
         [HttpGet]
@@ -108,7 +112,12 @@ namespace TLOSolution.WebApp.Controllers
             }
 
             var user = await _userManager.FindByEmailAsync(request.Email);
-
+            var userRole = (from r in _context.Roles
+                           join ur in _context.UserRoles
+                           on r.Id equals ur.RoleId
+                           where user.Id == ur.UserId
+                           select r.Name).FirstOrDefault();
+            
             if (user == null)
             {
                 ModelState.AddModelError("", "email is not valid");
@@ -126,10 +135,10 @@ namespace TLOSolution.WebApp.Controllers
                 var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
                 identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
                 identity.AddClaim(new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName));
+                identity.AddClaim(new Claim(ClaimTypes.Role, userRole));
 
                 await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
                     new ClaimsPrincipal(identity));
-
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
             else
