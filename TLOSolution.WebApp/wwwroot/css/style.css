@@ -72,7 +72,7 @@ body {
 #header {
     background-color: #1f29a5;
     position: fixed !important;
-    z-index: 1000;
+    z-index: 1;
     top: 0;
     left: 0;
     right: 0;
@@ -472,6 +472,7 @@ a:hover {
 .personal {
     display: flex;
     position: relative;
+    margin-right: 70px;
 }
 
 .personal-name {
@@ -498,6 +499,7 @@ a:hover {
     .notify i {
         margin: auto;
         font-size: 20px;
+        color: white;
     }
 
 .personal-name a:hover {
@@ -506,9 +508,10 @@ a:hover {
 
 .personal-info {
     position: absolute;
-    right: 0;
+    left: 0;
     background-color: white;
     width: 150px;
+    height: 180px;
     top: 53px;
     background-color: #f8f8f8;
 }
@@ -637,17 +640,395 @@ a:hover {
     margin: auto;
     color: green;
     font-size: 50px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .succes-i {
     display: flex;
 }
 
-.confirmemailresgisterabc {
+.confirm-mail span {
+    text-align: center
+}
+
+.abc {
     display: flex;
 }
 
-.confirmemailresgisterabc a {
+    .abc a {
+        margin: auto;
+    }
+
+.user-control {
+    margin-top: 50px;
+}
+
+    .user-control h4 {
+        text-align: center;
+        font-size: 20px !important;
+        margin-top: 10px;
+    }
+
+.bdr {
+    border-right: 1px solid black;
+}
+
+.flex1 {
+    display: flex;
+    justify-content: center;
+}
+
+    .flex1 h4 {
+        border-radius: 20px;
+        width: 170px;
+        cursor: pointer;
+        margin: auto;
+        padding: 3px;
+    }
+
+    .flex1 i {
+        padding-right: 10px;
+    }
+
+.comment {
+    display: flex;
+}
+
+.img-user {
+    padding: 20px;
+    border-radius: 20px;
+    background-image: url("https://media.store123doc.com/images/default/user_small.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-right: 10px;
+}
+
+.form-control {
+    border-radius: 15px !important;
+}
+
+.post {
+    margin-left: 10px;
+    border-radius: 15px !important;
+}
+
+.flex1 h4:hover {
+    color: white;
+    background-color: green;
+}
+
+.user-comment {
+    height: 500px;
+    margin-top: 40px;
+}
+
+.user-comment-line {
+    display: flex;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.user-comment h5 {
+    font-size: 14px;
+    margin-bottom: 3px;
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+.name-user {
+    font-weight: bold !important;
+    font-size: 12px !important;
+}
+
+.img-user-small {
+    padding: 25px;
+    background-image: url("https://media.store123doc.com/images/default/user_small.png");
+    background-size: 100%;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+}
+
+.comment-exts a {
+    font-size: 10px;
+    margin-right: 5px;
+}
+
+.comment-exts {
+    margin-left: 10px;
+}
+
+.user-comment-item {
+    width: 700px;
+    border: 1px solid beige;
+    border-radius: 10px;
+    position: relative;
+}
+
+    .user-comment-item:hover .remove {
+        display: block !important;
+    }
+
+    .user-comment-item:hover {
+        background-color: rgb(198, 214, 221);
+    }
+
+.remove {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    cursor: pointer;
+    display: none !important;
+}
+
+    .remove:hover {
+        color: cadetblue;
+    }
+
+.modal-main {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: none;
+}
+
+.modal-box {
+    width: 620px;
+    height: 500px;
+    background-color: white;
+    position: fixed;
+    left: 450px;
+    top: 120px;
+    z-index: 4;
+    border-radius: 5px;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 3;
+}
+
+.header-control {
+    display: block;
+    z-index: 1;
+}
+
+.modal-box--inner__header {
+    margin-top: 10px;
+    position: relative;
+}
+
+    .modal-box--inner__header i {
+        position: absolute;
+        right: 14px;
+        top: 7px;
+        cursor: pointer;
+    }
+
+        .modal-box--inner__header i:hover {
+            color: red;
+        }
+
+    .modal-box--inner__header h4 {
+        text-align: center;
+        font-size: 18px;
+        color: red;
+    }
+
+#checked-radio {
+    color: black;
+}
+
+    #checked-radio:hover {
+        color: rgb(175, 101, 48) !important;
+    }
+
+    #checked-radio label {
+        cursor: pointer;
+    }
+
+.form__modal-box--h4 {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 40px;
+    margin-top: 50px;
+    color: rgb(131, 67, 21);
+}
+
+.submit__modalbox {
+    display: flex;
+}
+
+    .submit__modalbox button {
+        margin: auto;
+        padding: 10px;
+        width: 100px !important;
+    }
+
+.main-user {
+    min-height: 700px;
+    margin-top: 73px;
+}
+
+.user__ad {
+    background-image: url("../image/content-last/bg_tab.png");
+    height: 98px;
+    width: 100%;
+    background-color: #00a888;
+}
+
+.container-1280 {
+    width: 1280px;
     margin: auto;
+}
+
+.user__bg-white--icon {
+    position: relative;
+}
+
+.user__bg-white {
+    background-color: white;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.user__bg-white--icon img {
+    width: 96px;
+    height: 96px;
+    position: absolute;
+    top: -40px;
+    border: 2px solid #fff;
+}
+
+.user__name {
+    margin-left: 130px;
+}
+
+    .user__name h5 {
+        font-weight: 450 !important;
+        font-size: 22px;
+    }
+
+.message {
+    margin-left: 13px;
+    font-size: 12px;
+    color: #999;
+}
+
+    .message i {
+        font-size: 13px;
+        color: #999;
+        margin-right: 4px;
+    }
+
+.main-user--h4 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.properties {
+    padding: 12px;
+    margin-bottom: 7px;
+    font-size: 19px;
+    font-weight: 400 !important;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: white;
+}
+
+    .properties:hover {
+        background-color: #00a888;
+        color: white;
+    }
+
+.border-program {
+    background-color: white;
+    padding: 0px 25px;
+}
+
+.h3-control {
+    padding: 20px 0px;
+    display: none;
+}
+
+.bg-two {
+    background-color: #eceef1;
+}
+
+.user__name-form {
+    padding-top: 15px;
+    position: relative;
+}
+
+.setting-modify {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+}
+
+.user__infomation-item {
+    position: relative;
+}
+
+.user__password-modify {
+    position: relative;
+}
+
+.span-left {
+    width: 200px;
+    display: inline-block;
+}
+
+.publisher__register {
+    margin-bottom: 50px;
+    margin-top: 20px;
+    width: 120px;
+}
+
+#program-form2 h4 {
+    padding: 20px 0px;
+    text-align: center;
+}
+
+#program-form3 h4 {
+    padding: 20px 0px;
+    text-align: center;
+}
+
+#program-form2 {
+    display: none;
+}
+
+#program-form3 {
+    display: none;
+}
+
+.active__select-control {
+    background-color: #00a888;
+    color: white;
+}
+
+#program-form1 {
+    display: none;
+}
+
+.active-form {
+    display: block !important;
+}
+
+.mgl10 {
+    margin-left: 10px;
+}
+
+.pdb60 {
+    padding-bottom: 60px;
+}
+
+.remove-textalign {
+    text-align: start !important;
 }
