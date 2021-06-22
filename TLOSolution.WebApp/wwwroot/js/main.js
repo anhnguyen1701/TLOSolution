@@ -1,3 +1,17 @@
+function submit_form() {
+    var form = document.getElementById("my_form99");
+    form.submit();
+}
+
+function GetSelectedTextValue() {
+    var ddlFruits = document.getElementById("combobox99");
+    var selectedText = ddlFruits.options[ddlFruits.selectedIndex].innerHTML;
+    var selectedValue = ddlFruits.value;
+
+    document.getElementById('CategoryId').value = selectedValue;
+    return false;
+}
+
 const views1 = document.getElementsByClassName("box ");
 const views2 = document.getElementsByClassName("content-last-list ");
 for (var i = 0; i < views1.length; i++) {
@@ -51,18 +65,6 @@ if (register) {
         location.replace("Register.html");
     }, false);
 }
-
-var search = document.getElementById('search-icon');
-if (search) {
-    search.addEventListener('click', () => {
-        location.replace("Search.html");
-    }, false);
-}
-const views4 = document.getElementsByClassName("text-h3");
-for (var i = 0; i < views4.length; i++) {
-    views4[i].addEventListener('click', chuyenHuong);
-}
-
 
 const close = document.getElementById("close");
 if (close) {
